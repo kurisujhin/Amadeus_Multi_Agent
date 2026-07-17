@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design: LLM/NLP"
+  short_description: "Evidence-backed workflow gates for LLM/NLP"
+  default_prompt: "Use $workflow-design-llm-nlp with $multi-agent-workflow-designer-v5 to design and validate this LLM/NLP workflow."

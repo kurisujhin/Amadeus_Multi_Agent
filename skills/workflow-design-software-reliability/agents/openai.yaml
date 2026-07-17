@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design: Software/Reliability"
+  short_description: "Evidence-backed software reliability workflow gates"
+  default_prompt: "Use $workflow-design-software-reliability with $multi-agent-workflow-designer-v4 to design and validate this software/reliability workflow."

@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/multi-agent-workflow-designer/v5-domain-1.schema.json",
+  "title": "Multi-agent workflow designer native domain packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "parent_contract_version", "domain_packet_schema", "producer", "routing",
+    "domain_state", "human_input_deltas", "domain_gates", "work_model_delta",
+    "action_delta", "anomaly_delta", "change_impact_delta", "reviewer_competencies",
+    "insight_constraints", "shared_evidence_refs", "simplification_records",
+    "borrowed_lenses", "handoff_status"
+  ],
+  "properties": {
+    "parent_contract_version": {"const": "v5"},
+    "domain_packet_schema": {"const": "v5-domain-1"},
+    "producer": {"$ref": "#/$defs/producer"},
+    "routing": {"$ref": "#/$defs/routing"},
+    "domain_state": {"$ref": "#/$defs/domain_state"},
+    "human_input_deltas": {"type": "array", "items": {"$ref": "#/$defs/human_input"}},
+    "domain_gates": {"type": "array", "items": {"$ref": "#/$defs/domain_gate"}},
+    "work_model_delta": {"$ref": "#/$defs/work_model_delta"},
+    "action_delta": {"$ref": "#/$defs/action_delta"},
+    "anomaly_delta": {"$ref": "#/$defs/anomaly_delta"},
+    "change_impact_delta": {"$ref": "#/$defs/change_impact_delta"},
+    "reviewer_competencies": {"$ref": "#/$defs/string_array"},
+    "insight_constraints": {"$ref": "#/$defs/nonempty_string_array"},
+    "shared_evidence_refs": {"$ref": "#/$defs/string_array"},
+    "simplification_records": {"$ref": "#/$defs/string_array"},
+    "borrowed_lenses": {"$ref": "#/$defs/string_array"},
+    "extensions": {
+      "type": "object",
+      "propertyNames": {"pattern": "^[^/\\s]+/[^/\\s]+$"},
+      "additionalProperties": {"$ref": "#/$defs/extension"}
+    },
+    "handoff_status": {"enum": ["ready", "partial", "blocked"]}
+  },
+  "$defs": {
+    "string_array": {"type": "array", "items": {"type": "string"}},
+    "nonempty_string_array": {
+      "type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}
+    },
+    "producer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["subskill_name", "snapshot_id", "subskill_fingerprint"],
+      "properties": {
+        "subskill_name": {"type": "string", "minLength": 1},
+        "snapshot_id": {"const": "2026-07-12-v5-native"},
+        "subskill_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "routing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["role", "primary_domain", "route_reason", "marginal_delta", "omissions_or_exception"],
+      "properties": {
+        "role": {"enum": ["primary", "borrowed"]},
+        "primary_domain": {"type": "string", "minLength": 1},
+        "route_reason": {"type": "string", "minLength": 1},
+        "marginal_delta": {"type": "string", "minLength": 1},
+        "omissions_or_exception": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "domain_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ledger_additions", "knowledge_source_deltas", "unresolved_domain_facts"],
+      "properties": {
+        "ledger_additions": {"$ref": "#/$defs/string_array"},
+        "knowledge_source_deltas": {"$ref": "#/$defs/string_array"},
+        "unresolved_domain_facts": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "human_input": {
+      "anyOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["fact", "applicability", "evidence_refs"],
+          "properties": {
+            "fact": {"type": "string", "minLength": 1},
+            "applicability": {"const": "not_applicable"},
+            "evidence_refs": {"$ref": "#/$defs/nonempty_string_array"}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": [
+            "fact", "authorized_owner", "decisions_actions_gates_affected",
+            "blocked_commitments", "safe_discovery_continuing", "bounded_probe_if_any",
+            "reopen_trigger"
+          ],
+          "properties": {
+            "fact": {"type": "string", "minLength": 1},
+            "authorized_owner": {"type": "string", "minLength": 1},
+            "decisions_actions_gates_affected": {"$ref": "#/$defs/nonempty_string_array"},
+            "blocked_commitments": {"$ref": "#/$defs/nonempty_string_array"},
+            "safe_discovery_continuing": {"$ref": "#/$defs/string_array"},
+            "bounded_probe_if_any": {"$ref": "#/$defs/string_array"},
+            "reopen_trigger": {"$ref": "#/$defs/nonempty_string_array"}
+          }
+        }
+      ]
+    },
+    "domain_gate": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "gate_id", "action_stage", "proof_phase", "applicability",
+        "applicability_evidence_refs", "decision", "evidence_required", "evidence_refs",
+        "open_gap_ids", "blocked_commitments", "required_change",
+        "reopen_or_invalidation_trigger"
+      ],
+      "properties": {
+        "gate_id": {"type": "string", "minLength": 1},
+        "action_stage": {"type": "string", "minLength": 1},
+        "proof_phase": {"enum": ["entry", "result"]},
+        "applicability": {"enum": ["applicable", "not_applicable", "unresolved"]},
+        "applicability_evidence_refs": {"$ref": "#/$defs/nonempty_string_array"},
+        "decision": {"enum": ["pass", "open", "blocked", "not_applicable"]},
+        "evidence_required": {"$ref": "#/$defs/string_array"},
+        "evidence_refs": {"$ref": "#/$defs/string_array"},
+        "open_gap_ids": {"$ref": "#/$defs/string_array"},
+        "blocked_commitments": {"$ref": "#/$defs/string_array"},
+        "required_change": {"$ref": "#/$defs/string_array"},
+        "reopen_or_invalidation_trigger": {"$ref": "#/$defs/nonempty_string_array"}
+      }
+    },
+    "work_model_delta": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "semantic_units_and_cardinality", "governing_source_or_dataflow",
+        "loops_fanout_access_pattern", "lower_bounds", "calibration_slices_and_oracles",
+        "progress_resource_integrity_signals", "domain_NA_evidence"
+      ],
+      "properties": {
+        "semantic_units_and_cardinality": {"type": "string"},
+        "governing_source_or_dataflow": {"type": "string"},
+        "loops_fanout_access_pattern": {"type": "string"},
+        "lower_bounds": {"type": "string"},
+        "calibration_slices_and_oracles": {"$ref": "#/$defs/string_array"},
+        "progress_resource_integrity_signals": {"$ref": "#/$defs/string_array"},
+        "domain_NA_evidence": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "action_delta": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "safe_discovery", "validation_actions_with_entry_and_result_gates",
+        "protected_domain_actions_with_gates_and_recovery", "domain_NA_evidence"
+      ],
+      "properties": {
+        "safe_discovery": {"$ref": "#/$defs/string_array"},
+        "validation_actions_with_entry_and_result_gates": {"$ref": "#/$defs/string_array"},
+        "protected_domain_actions_with_gates_and_recovery": {"$ref": "#/$defs/string_array"},
+        "domain_NA_evidence": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "anomaly_delta": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "barriers", "triggers", "domain_causes", "discriminating_probes",
+        "integrity_or_claim_impact", "affected_gates_evidence_descendants", "domain_NA_evidence"
+      ],
+      "properties": {
+        "barriers": {"$ref": "#/$defs/string_array"},
+        "triggers": {"$ref": "#/$defs/string_array"},
+        "domain_causes": {"$ref": "#/$defs/string_array"},
+        "discriminating_probes": {"$ref": "#/$defs/string_array"},
+        "integrity_or_claim_impact": {"$ref": "#/$defs/string_array"},
+        "affected_gates_evidence_descendants": {"$ref": "#/$defs/string_array"},
+        "domain_NA_evidence": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "change_impact_delta": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "semantic_artifact_classes", "invalidation_edges", "verification_or_replay_due",
+        "sensitive_payload_constraints", "domain_NA_evidence"
+      ],
+      "properties": {
+        "semantic_artifact_classes": {"$ref": "#/$defs/string_array"},
+        "invalidation_edges": {"$ref": "#/$defs/string_array"},
+        "verification_or_replay_due": {"$ref": "#/$defs/string_array"},
+        "sensitive_payload_constraints": {"$ref": "#/$defs/string_array"},
+        "domain_NA_evidence": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "extension": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "value"],
+      "properties": {
+        "schema": {"type": "string", "minLength": 1},
+        "value": {}
+      }
+    }
+  }
+}

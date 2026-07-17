@@ -1,0 +1,4 @@
+interface:
+  display_name: "Amadeus"
+  short_description: "Scope-faithful, minimum-sufficient agent workflows"
+  default_prompt: "Use $amadeus to design or execute a scope-faithful real-agent workflow with minimum-sufficient work and proportional verification."

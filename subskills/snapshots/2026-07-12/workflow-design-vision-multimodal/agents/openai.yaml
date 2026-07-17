@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design: Vision/Multimodal"
+  short_description: "Evidence-backed vision and multimodal gates"
+  default_prompt: "Use $workflow-design-vision-multimodal with $multi-agent-workflow-designer-v4 to design and validate this vision workflow."

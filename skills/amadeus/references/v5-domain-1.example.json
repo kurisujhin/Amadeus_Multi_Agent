@@ -1,0 +1,81 @@
+{
+  "parent_contract_version": "v5",
+  "domain_packet_schema": "v5-domain-1",
+  "producer": {
+    "subskill_name": "workflow-design-llm-nlp",
+    "snapshot_id": "2026-07-12-v5-native",
+    "subskill_fingerprint": "b6f47229f169f75e82e270364c0ad805ede53a96dbdcba075108bc58266f4fc6"
+  },
+  "routing": {
+    "role": "primary",
+    "primary_domain": "workflow-design-llm-nlp",
+    "route_reason": "Generated-language evaluation validity is dominant.",
+    "marginal_delta": "Grounding, prompt-version, judge, latency, and cost gates.",
+    "omissions_or_exception": []
+  },
+  "domain_state": {
+    "ledger_additions": ["Prompt and model versions are evidence identity."],
+    "knowledge_source_deltas": ["repo://eval/prompt.yaml"],
+    "unresolved_domain_facts": []
+  },
+  "human_input_deltas": [
+    {
+      "fact": "No unavailable user-owned direction-changing fact was found.",
+      "applicability": "not_applicable",
+      "evidence_refs": ["repo://task-ledger/context-disposition"]
+    }
+  ],
+  "domain_gates": [
+    {
+      "gate_id": "llm-grounding-1",
+      "action_stage": "evaluate",
+      "proof_phase": "entry",
+      "applicability": "applicable",
+      "applicability_evidence_refs": ["repo://eval/design"],
+      "decision": "pass",
+      "evidence_required": ["Pinned prompt, model, and grounded fixture"],
+      "evidence_refs": ["repo://eval/fixture-1"],
+      "open_gap_ids": [],
+      "blocked_commitments": [],
+      "required_change": [],
+      "reopen_or_invalidation_trigger": ["Prompt, model, judge, or fixture changes"]
+    }
+  ],
+  "work_model_delta": {
+    "semantic_units_and_cardinality": "One prompt-model-fixture combination",
+    "governing_source_or_dataflow": "Pinned prompt and fixture to model response and judge",
+    "loops_fanout_access_pattern": "One bounded request followed by one judge pass",
+    "lower_bounds": "At least one model request",
+    "calibration_slices_and_oracles": ["Known-answer grounded fixture"],
+    "progress_resource_integrity_signals": ["Request completed and response parsed"],
+    "domain_NA_evidence": []
+  },
+  "action_delta": {
+    "safe_discovery": ["Read pinned prompt and fixture"],
+    "validation_actions_with_entry_and_result_gates": ["Run bounded grounded evaluation"],
+    "protected_domain_actions_with_gates_and_recovery": [],
+    "domain_NA_evidence": []
+  },
+  "anomaly_delta": {
+    "barriers": ["Before interpreting judge output"],
+    "triggers": ["Latency or token use outside calibrated range"],
+    "domain_causes": ["Service queueing", "Prompt expansion", "Evaluation bug"],
+    "discriminating_probes": ["Compare request timing, token counts, and fixture identity"],
+    "integrity_or_claim_impact": ["Withhold quality claim until cause is isolated"],
+    "affected_gates_evidence_descendants": ["llm-grounding-1"],
+    "domain_NA_evidence": []
+  },
+  "change_impact_delta": {
+    "semantic_artifact_classes": ["Prompt", "model identity", "judge", "fixture"],
+    "invalidation_edges": ["Prompt or model change invalidates response and judge evidence"],
+    "verification_or_replay_due": ["Replay affected prompt-model-fixture combinations"],
+    "sensitive_payload_constraints": ["Do not place private prompt payloads in receipts"],
+    "domain_NA_evidence": []
+  },
+  "reviewer_competencies": ["LLM evaluation and grounding"],
+  "insight_constraints": ["Do not infer quality from a structurally valid response alone"],
+  "shared_evidence_refs": ["repo://eval/fixture-1"],
+  "simplification_records": [],
+  "borrowed_lenses": [],
+  "handoff_status": "ready"
+}

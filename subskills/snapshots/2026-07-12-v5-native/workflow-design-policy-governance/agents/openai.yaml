@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design: Policy/Governance"
+  short_description: "Evidence-backed policy and governance workflow gates"
+  default_prompt: "Use $workflow-design-policy-governance with $multi-agent-workflow-designer-v5 to design and validate this policy/governance workflow."

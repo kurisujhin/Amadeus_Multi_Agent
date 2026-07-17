@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design: Speech/Audio"
+  short_description: "Evidence-backed speech and audio workflow gates"
+  default_prompt: "Use $workflow-design-speech-audio with $multi-agent-workflow-designer-v4 to design and validate this speech/audio workflow."

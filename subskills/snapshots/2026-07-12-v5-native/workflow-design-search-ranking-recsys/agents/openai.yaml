@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design: Search/Ranking/Recsys"
+  short_description: "Evidence-backed search and ranking workflow gates"
+  default_prompt: "Use $workflow-design-search-ranking-recsys with $multi-agent-workflow-designer-v5 to design and validate this search/ranking workflow."
