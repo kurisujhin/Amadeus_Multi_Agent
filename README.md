@@ -99,6 +99,10 @@ Amadeus is not a claim that more agents always produce better answers. Coordinat
 
 Use the heavier modes when the cost of correlated error, hidden drift, unauthorized action, or bad recovery is larger than the coordination cost. The workflow should earn every node.
 
+## Domain maturity note
+
+The author is currently focused on recommender systems, so the search, ranking, and recommendation domain has the strongest direct author attention. The other domain skills provide useful workflow gates and starting points, but applying Amadeus there may require additional effort from the user to supply qualified domain experts, authoritative sources, domain-specific acceptance criteria, and independent validation. Treat the packaged domain guidance as orchestration support—not a substitute for subject-matter expertise—especially for consequential decisions outside recommender systems.
+
 ## System requirements
 
 - **Platform and runtime:** Amadeus targets an OpenAI Codex environment that can load Codex Skills and run genuine, context-separated agents. The `compact`, `careful`, and `full` workflows require lifecycle controls to create, dispatch concurrently, message, observe, wait for, and stop independent agents, plus a way to enforce binding pause, veto, and resume decisions. A single conversational context—even when prompted to simulate multiple personas—does not satisfy Amadeus's real-agent independence contract. In a single-context environment, Amadeus's guidance may still inform bounded direct work, but the run is non-independent and must not be presented as a fully compliant Amadeus real-agent execution.
