@@ -1,135 +1,141 @@
-# Amadeus: real agents, enforceable independence
+# Amadeus Workflow: Generations 1 and 2
 
-![Amadeus real-agent workflow chart](./amadeus-workflow-chart-v6.png)
+[Project repository](https://github.com/kurisujhin/Amadeus_Multi_Agent)
 
-Amadeus is much better than a monolithic agent on consequential work for a concrete reason: it replaces “please think carefully” with mechanisms that can be inspected and enforced—separate runtimes, independently frozen framings, explicit dispatch, direct evidence, binding vetoes, scoped recovery, and provenance-backed claims.
+> **Naming contract.** **Amadeus** is the overall workflow and the name of **Generation 1**. **Arlecchino** is **Generation 2 of the Amadeus workflow**, not a separate workflow.
 
-It is not better because it creates more voices. It is better when it creates independence and control that one context cannot honestly simulate.
+Amadeus turns consequential work from a single-context performance of “thinking carefully” into an inspectable real-agent system: explicit scope, separate runtimes, independently grounded evidence, observable dispatch, binding control, scoped recovery, and claims limited by verification.
 
-## What “better” means
+Generation 2 keeps that foundation and adds mandatory human-visible activation and continuous status. The difference between the generations is primarily their activation contract.
 
-For uncertain, long-running, expensive, sensitive, or effectful work, “better” means:
+## Generation map
 
-- separate framing and evidence are designed to expose and reduce shared error correlation;
-- protected actions cannot proceed on confidence alone because authority, permits, and vetoes are explicit;
-- work can be genuinely concurrent because ready nodes are dispatched, rather than merely narrated as parallel;
-- drift is caught while execution is happening through direct evidence and binding observer decisions;
-- a correction or anomaly invalidates only affected descendants, while sound independent work continues;
-- rollback, restart fencing, late-output quarantine, and exact artifact parity make recovery auditable;
-- the final claim is limited to what structural, semantic, measurement, and decision evidence actually supports.
-
-That is a much stronger reliability model than one agent generating an answer and then grading its own answer.
-
-## A simple prompt can still lead to serious work
-
-Amadeus lets a user start with a concise, outcome-oriented prompt instead of encoding the full workflow. It turns that starting point into a `UserExecutionContract`, retrieves discoverable context, routes task-relevant domain expertise and capabilities, asks only for unavailable choices that could change the result, and builds task-specific execution and verification. That design can support high-quality outcomes across varied tasks while keeping the user’s prompt simple—provided the required evidence, authority, and success criteria can be obtained.
-
-This is a practical kind of leverage: the user describes the outcome and important constraints; Amadeus carries the orchestration complexity. It can change the topology, evidence plan, specialists, observer controls, and verification ladder to fit the task rather than forcing the user to know and prompt every implementation step up front.
-
-A hard-coded single-agent style skill can be excellent for a narrow, stable pattern. A fixed persona, checklist, or writing style does not by itself supply adaptive routing, independent evidence, binding vetoes, live observation, or scoped recovery when the task changes. Amadeus moves that complexity out of the initial prompt and into an inspectable workflow.
-
-This is not prompt magic. Amadeus cannot infer missing private intent, grant authority, or choose a user-owned tradeoff. It minimizes questions by retrieving what is discoverable, then asks for the unavailable decisions that actually change the result.
-
-## Why virtual roles are still one agent
-
-Asking one model to “act as a planner, critic, engineer, and reviewer” can improve organization and self-critique. It does **not** by itself create independence.
-
-| Property | Plain single agent | Single agent with virtual roles | Amadeus |
+| Level | Name | Reference release | Role |
 |---|---|---|---|
-| Initial framing | One framing | Several labels around the same framing | Framings can be frozen separately before conclusions leak |
-| Evidence | One evidence path | Usually shared memory and shared evidence | Independent samples, holdouts, and direct evidence access |
-| Concurrency | Serial | Usually a serial role simulation | Ready-set dispatch with observable queue/start/overlap state |
-| Review | Self-check | Structured self-critique | Context-separated adjudication against a precommitted rubric |
-| Authority | The runtime approves itself | A persona grants another persona approval | Typed permits, distinct veto authority, and explicit resume authority |
-| Live control | Ad hoc monitoring | The same context decides whether its own work drifted | An observer can issue a binding pause, stop, or replan verdict |
-| Failure recovery | Retry from the same state | Persona-guided retry | Safe-stop, impact closure, partial invalidation, epoch fencing, quarantine |
-| Provenance | Often answer-level | Usually conversation-level | Claim-scoped evidence, snapshot freshness, and exact artifact parity |
-| Prompt-to-workflow adaptation | Depends on one runtime’s interpretation | Preset role/style behavior fits known patterns | A concise goal expands through context closure, routing, a task-specific DAG, and verification |
-| Cost | Lowest | Low to moderate | Higher, so topology is selected proportionally |
+| Workflow family | **Amadeus** | — | The overall real-agent workflow |
+| Generation 1 | **Amadeus** | V5.1 | Establishes the real-agent foundation and barrier-based controls |
+| Generation 2 | **Arlecchino** | V6 | Adds mandatory pre-execution alignment, explicit task-level approval, and continuous status |
 
-A single context shares anchors, assumptions, memory, evidence exposure, and incentives across all its virtual roles. The “critic” already knows what the “author” hoped to prove. The “approver” is enforced by the same runtime it is meant to constrain. A role label cannot create a blind sample, a separate failure surface, real concurrent execution, or a binding veto.
+![Generation comparison inside the Amadeus workflow](./amadeus-vs-arlecchino.png)
 
-If a virtual-role system really uses separate contexts, independent evidence, explicit dispatch records, distinct authority, contamination controls, and typed joins, it is no longer merely roleplay—it is converging on a real multi-agent workflow like Amadeus.
+The shared foundation is intentionally larger than the generational difference:
 
-## How the workflow works
+- Golden Circle reasoning: **Why → How → What**;
+- literal scope and minimum-sufficient work;
+- proportional topology: **direct, compact, careful, full**;
+- real context-separated agents, a runtime DAG, typed edges, and typed joins;
+- independent evidence, blind review, observer veto, and scoped replanning; and
+- provenance, rollback, recovery, workload awareness, and bounded claims.
 
-Amadeus begins with the Golden Circle, not with a cast list:
+## Shared foundation: why real agents matter
+
+A single model can simulate planner, critic, engineer, reviewer, and approver personas. Those labels may improve organization, but they still share framing, memory, evidence exposure, and incentives. Amadeus uses real boundaries only when they can change the result.
+
+| Property | Same-context virtual roles | Amadeus real-agent foundation |
+|---|---|---|
+| Framing | Several labels around one framing | Framings can be frozen separately before conclusions leak |
+| Evidence | Shared memory and evidence path | Independent samples, holdouts, and direct evidence access |
+| Concurrency | Usually serial role simulation | Ready nodes are dispatched with observable queue, start, and overlap state |
+| Review | Structured self-critique | Context-separated adjudication against a precommitted rubric |
+| Authority | One persona appears to approve another | Approval, permits, veto, and resume authority remain distinct |
+| Live control | The executor judges its own drift | An observer can issue a binding pause, stop, or replan verdict |
+| Recovery | Retry from shared state | Safe-fencing, partial invalidation, epoch fencing, rollback, and quarantine |
+| Provenance | Conversation- or answer-level | Claim-scoped evidence, freshness, and exact artifact parity |
+
+If a virtual-role system actually provides separate contexts, independently chosen evidence, explicit dispatch records, distinct authority, contamination controls, and typed joins, it has moved beyond roleplay and toward the Amadeus real-agent model.
+
+## Generation 1 — Amadeus V5.1
+
+Generation 1 establishes the core reliability model. It replaces an undifferentiated agent loop with a scope-faithful execution graph whose topology is earned by distinct uncertainty, capability, veto, effect, or independence boundaries.
+
+![Generation 1 operating flow](./amadeus-workflow-chart-v6.png)
 
 1. **Freeze the contract.** Capture the requested outcome, allowed scope, invariants, metrics, authority, outputs, budget, and terminal cleanup in a `UserExecutionContract`.
-2. **Close context and route.** Retrieve discoverable facts, expose only direction-changing gaps, classify protected actions, and route domain/model/capability requirements before commitment.
-3. **Choose the minimum sufficient topology.** Use `direct`, `compact`, `careful`, or `full`. A role exists only for a distinct uncertainty, capability, veto, effect, or independence boundary.
-4. **Build the executable DAG.** Give nodes evidence targets and authority; type edges as hard, snapshot, veto, or advisory; type joins; reserve reviewer/observer capacity; dispatch every eligible independent node up to the real cap.
-5. **Execute and observe.** The owner/executor senses local state. The independent observer judges goal, safety, authority, and drift from direct evidence. The blind reviewer separately adjudicates meaning and claims. Observer and reviewer are distinct functions, not sequential personas.
-6. **Replan only what changed.** An anomaly or correction triggers safe-stop/fencing, an accepted impact decision, claim-scoped invalidation, and an epoch change when needed. Unaffected branches remain usable and ready.
-7. **Verify and finish.** Separate structural, semantic, measurement, and decision validity; preserve disagreement; verify provenance, rollback/recovery, cleanup, and final artifact parity; then deliver, narrow, block, or stop.
+2. **Close context and route.** Retrieve discoverable facts, expose direction-changing gaps, classify protected actions, and route domain, model, and capability requirements before commitment.
+3. **Choose the minimum-sufficient topology.** Use `direct`, `compact`, `careful`, or `full`; never add a role merely to fill a cast list.
+4. **Build the executable DAG.** Give nodes evidence targets and authority, type their edges and joins, reserve reviewer or observer capacity, and dispatch eligible independent nodes.
+5. **Execute, observe, and review.** The owner senses local state; the independent observer judges goal, safety, authority, and drift; the blind reviewer separately adjudicates meaning and claims.
+6. **Replan only what changed.** A correction or anomaly safe-fences affected work and invalidates only intersecting descendants and permits.
+7. **Verify and finish.** Keep structural, semantic, measurement, and decision validity distinct; close provenance, rollback, cleanup, and final-artifact parity before reporting.
 
-The thin reliability kernel runs across the workflow: authority, freshness, provenance, workload modeling, rollback, epoch fencing, and quarantine of late or stale output.
+Generation 1 performs context closure at consequential commitment barriers: costly, protected, long-running, high-fanout, hard-to-reverse, or design-locking work. Cheap, local, reversible, objectively checked work may proceed directly after classification. Protected actions still require explicit authority and permits.
 
-The optional insight path is equally disciplined. A surprising idea becomes an `InsightCandidate`, not evidence. It must survive an authority/safety screen, the cheapest useful falsifier, untouched confirmation when warranted, and context-separated review. An “Aha” never bypasses a veto.
+## Generation 2 — Arlecchino V6
 
-## Four traces through the chart
+Arlecchino is **Generation 2 of Amadeus**. It retains the real-agent foundation while making task activation and execution status visible for every nontrivial task.
 
-These traces are a quick way to tell whether an implementation is genuinely Amadeus-shaped.
+![Generation 2 activation flow](./arlecchino-workflow-chart.png)
 
-### 1. Cheap local task
+### Five mandatory controls
 
-The contract is bounded, reversible, and objectively checkable. The topology selector chooses `direct`; the coordinator performs the edit and one focused check. Amadeus avoids inventing agents whose coordination cost cannot change the result.
+- **Read-only discovery first.** Resolve the smallest set of facts needed for scope, clause attachment, canonical roots, collisions, authority, and the future status path. Before approval there are no task writes, agents, tests, or external effects.
+- **Bounded alignment on one snapshot.** Round 1 reconstructs and retrieves. Round 2 assesses every input’s impact and challenges the design. Round 3 exists only for a material delta or contradiction; unresolved movement trips a circuit breaker rather than creating a silent Round 4.
+- **A visible current digest.** The user sees the outcome, exact scope and exclusions, topology, outputs, workload, status ownership, monitoring, verification, rollback, report, teardown, cleanup, and unavailable user-owned choices.
+- **A separate approval receipt.** Nontrivial execution depends on a parent-owned `PreExecutionApproval` bound to the current task, epoch, latest digest, plan, scope, snapshot, action classes, authority, cost limits, expiry, and invalidation triggers.
+- **Continuous task status.** Exactly one collision-checked `TASK_STATUS.md` is created as the first post-approval mutation and maintained through milestones, dispatch, blockers, replanning, verification, cleanup, and terminal disposition.
 
-### 2. Bounded interpretation
+Pure read-only answers and status responses that need only bounded inspection remain direct and create no empty ledger.
 
-The selector chooses `compact`. The owner and blind reviewer receive the raw task independently. Before seeing the owner’s conclusion, the reviewer freezes scope, rival interpretations, an independent sample, and an expectation-independent control. Their results meet at an `all_required` join; disagreement is preserved until evidence resolves it or the claim is narrowed.
+### The seven-stage activation and execution flow
 
-### 3. Long or effectful action
+1. **Discovery only:** gather read-only facts and identify the exact future effect.
+2. **Align on one immutable snapshot:** complete the two-round minimum and one conditional third round.
+3. **Show the visible digest:** make the plan and boundaries easy for the user to audit.
+4. **Obtain an explicit user grant:** approval must refer to the latest digest; silence, a plan announcement, an older approval, or a successful result is not permission.
+5. **Write status first:** create or refresh the canonical `TASK_STATUS.md`; ledger text reports authority but never creates it.
+6. **Execute and observe:** dispatch the proportional runtime DAG with separated owner, observer, and reviewer functions where the task requires them.
+7. **Verify and close:** finish the report, teardown, cleanup, reviewer and observer joins, and terminal disposition.
 
-Suppose a production migration must preserve availability and rollback. The workflow closes authority and compatibility facts, freezes a workload envelope, reserves an observer, and issues a permit only for the authorized snapshot and stage. The executor runs the bounded action while the observer watches direct progress and integrity signals. Drift causes a binding pause; recovery follows the declared rollback boundary; post-action validation is a separate gate.
+### Bounded alignment
 
-### 4. Mid-task correction
+| Round | Required? | Purpose |
+|---|---|---|
+| Round 1 | Yes | Reconstruct every explicit clause, resolve prior referents, and retrieve the minimum discoverable facts |
+| Round 2 | Yes | Check the impact of every input and retrieval, then challenge omissions, contradictions, unnecessary work, and missing joins |
+| Round 3 | Conditional | Rebuild once after a material Round-2 delta or contradiction and test convergence |
+| Round 4 | Never | Continued movement becomes an explicit circuit breaker and user-visible blocker |
 
-A user correction is typed as a semantic event. Affected work is fenced first. The designated designer evaluates the correction against the whole original task, the coordinator accepts the resulting `TaskImpactPacket`, and only intersecting nodes, evidence, and permits are invalidated. A new epoch fences stale output while unaffected branches continue.
+## Choosing the topology
 
-## Why this advantage compounds
+Every node must earn its coordination cost.
 
-Independent review catches different mistakes only when its framing and evidence have not already been contaminated. Binding controls matter only when the executor cannot silently waive them. Observation matters only when it can change continuation. Provenance matters only when a changed artifact reopens the claims it actually affects. Amadeus connects all four conditions in one runtime graph.
+| Mode | Topology | Appropriate use |
+|---|---|---|
+| `direct` | Coordinator executes; an explicit workflow invocation adds one bounded independent premise, risk, or result check | Cheap, local, reversible work with an objective oracle |
+| `compact` | One owner and one context-separated reviewer | Bounded interpretation, synthesis, or experimentation where correlated framing could change the result |
+| `careful` | Specialists tied to real uncertainty, plus an independent observer for effectful or mistake-prone work | External, sensitive, long-running, difficult-to-rollback, or consequential execution |
+| `full` | Action-scoped approval, rollback, monitoring, recovery, restart fencing, and post-action validation | High-impact production or protected effects |
 
-A single agent—even a very capable one—can imitate the language of these controls. It cannot, within one shared context, supply the same evidence that those boundaries were real.
+## Install Arlecchino V6
 
-## When a single agent is the right answer
+Download [`arlecchino-install-ready.tar.gz`](./arlecchino-install-ready.tar.gz) and its [SHA-256 checksum](./arlecchino-install-ready.tar.gz.sha256). Verify the download, extract it, then run the bundled installer:
 
-Amadeus is not a claim that more agents always produce better answers. Coordination has real latency, cost, and integration risk. For a cheap, local, reversible task with an objective oracle, a single agent is usually the best topology—and Amadeus explicitly chooses `direct`.
+```bash
+shasum -a 256 -c arlecchino-install-ready.tar.gz.sha256
+tar -xzf arlecchino-install-ready.tar.gz
+cd arlecchino-bundle
+./install.sh
+```
 
-Use the heavier modes when the cost of correlated error, hidden drift, unauthorized action, or bad recovery is larger than the coordination cost. The workflow should earn every node.
+The default destination is `${CODEX_HOME:-$HOME/.codex}`. To select another Codex root, set `CODEX_HOME` before running the installer. The installer preserves the packaged dependency closure, creates the required active skill links, and moves same-named existing entries to a timestamped directory under `$CODEX_HOME/skill-backups`.
 
-## Domain maturity note
+## System requirements and limits
 
-The author is currently focused on recommender systems, so the search, ranking, and recommendation domain has the strongest direct author attention. The other domain skills provide useful workflow gates and starting points, but applying Amadeus there may require additional effort from the user to supply qualified domain experts, authoritative sources, domain-specific acceptance criteria, and independent validation. Treat the packaged domain guidance as orchestration support—not a substitute for subject-matter expertise—especially for consequential decisions outside recommender systems.
+- **Real context separation.** Independent review, blind evidence, observable concurrency, and binding observer claims require genuine separate agent contexts and lifecycle controls.
+- **Persistent writable workspace.** Generation 2 needs one unique, collision-checked location for `TASK_STATUS.md` under an approved root.
+- **Verification tooling.** Python 3 is sufficient for the packaged validators; the workflow text remains readable without them, but an unvalidated domain handoff cannot be represented as validator-backed.
+- **Capability-aware routing.** Mechanical, bounded implementation, consequential design, and experiment work require progressively stronger and attested model routes; critical duties do not silently downgrade.
 
-## System requirements
+Amadeus is a workflow-engineering design, not proof of an optimal agent count, universal cadence, or automatic quality advantage. Coordination has latency and integration cost. More agents help only when independent evidence, capability, control, or recovery can change the supported action.
 
-- **Platform and runtime:** Amadeus targets an OpenAI Codex environment that can load Codex Skills and run genuine, context-separated agents. The `compact`, `careful`, and `full` workflows require lifecycle controls to create, dispatch concurrently, message, observe, wait for, and stop independent agents, plus a way to enforce binding pause, veto, and resume decisions. A single conversational context—even when prompted to simulate multiple personas—does not satisfy Amadeus's real-agent independence contract. In a single-context environment, Amadeus's guidance may still inform bounded direct work, but the run is non-independent and must not be presented as a fully compliant Amadeus real-agent execution.
-- **Installation and filesystem:** Extract the [complete archive](../amadeus-v5.1-complete-install.tar.gz) into the Codex home directory, not directly into its `skills` subdirectory:
+The workflow cannot infer private intent, grant its own authority, choose a user-owned value tradeoff, or turn confidence into evidence. It reduces unnecessary questions by retrieving discoverable facts and pauses only where unavailable direction-changing input or authority is genuinely required.
 
-  ```bash
-  tar -xzf amadeus-v5.1-complete-install.tar.gz \
-    -C "${CODEX_HOME:-$HOME/.codex}"
-  ```
+## Sources and artifact provenance
 
-  Preserve the packaged `skills/` and `subskills/` directory structure. The installing user needs write access to the target directory and `tar` or an equivalent archive tool. The companion [SHA-256 file](../amadeus-v5.1-complete-install.tar.gz.sha256) can be used to verify the downloaded archive.
-- **Python:** The native domain-handoff validator requires Python 3 and uses only the standard library; no `pip` dependencies are needed. Use Python 3.10 or newer as a conservative supported baseline. This package was verified with Python 3.11.2. Without Python, the skill text remains readable, but a native domain handoff is incomplete because its rendered JSON cannot pass the packaged validator.
-- **Model routing:** Mechanical R0 work defaults to `gpt-5.6-luna` at `low`, with `gpt-5.6-terra` at `medium` as an upward-capability fallback. Bounded, known-design R1 implementation defaults to `gpt-5.6-terra` at `medium`, with Sol-high as an upward fallback. Consequential R2 architecture, topology, risk, safety, skill review, and `careful`/`full` observation require exact `gpt-5.6-sol` at `high` or stronger Sol reasoning. R3 experiment design, analysis, and independent experiment review require exact `gpt-5.6-sol` at `ultra`.
-- **Degradation boundary:** R2 and R3 have no downward model fallback. Their model identity and reasoning level must be selectable, accepted, enforceable, and attested; otherwise Amadeus must wait, narrow the task, or keep critical output advisory. Without a genuine multi-agent runtime, the workflow guidance may still be consulted, but real-agent independence, blind review, observable concurrency, and binding-observer claims do not apply.
+- [Amadeus project repository](https://github.com/kurisujhin/Amadeus_Multi_Agent)
+- Generation 1 chart: [`amadeus-workflow-chart-v6.png`](./amadeus-workflow-chart-v6.png), 1672 × 941 RGB, SHA-256 `8244f6b5af9157f74c26002b6a4e2ca2f90b64372f95585305c818421810036c`
+- Generation 2 chart: [`arlecchino-workflow-chart.png`](./arlecchino-workflow-chart.png), 1672 × 941 RGB, SHA-256 `21d5534f2c6bfc33ed4bbd91167be30450b87ee7dbf0b58c23f0ab94ef7c4973`
+- Generation comparison: [`amadeus-vs-arlecchino.png`](./amadeus-vs-arlecchino.png), 1672 × 941 RGB, SHA-256 `abd3e902641491b82bceeacbdf655a0732e965af2568941725d5f32146cc7250`
+- Research background: [task partitioning and integration](https://doi.org/10.1016/j.im.2006.12.001), [coordination costs in distributed collaboration](https://doi.org/10.1016/j.respol.2007.09.001), [structured debriefs](https://pubmed.ncbi.nlm.nih.gov/23516804/), and [mixed checklist effects](https://doi.org/10.1136/bmjopen-2021-058219)
 
-## Research limits
-
-Amadeus is a workflow-engineering design, not proof of a universal law about LLM teams. Human research on task partitioning, coordination, structured debriefs, and insight motivates testable hypotheses; it does not prove an optimal agent count or topology for language models. Evaluate the workflow on the target task with fixed rubrics, untouched confirmation where the claim warrants it, and latency/cost counter-metrics.
-
-Useful background includes work on [task partitioning and integration](https://doi.org/10.1016/j.im.2006.12.001), [coordination costs in distributed collaboration](https://doi.org/10.1016/j.respol.2007.09.001), and [structured debriefs](https://pubmed.ncbi.nlm.nih.gov/23516804/).
-
-## Artifact provenance
-
-- Chart: [`amadeus-workflow-chart-v6.png`](./amadeus-workflow-chart-v6.png)
-- Canvas: 1672 × 941 RGB PNG
-- SHA-256: `8244f6b5af9157f74c26002b6a4e2ca2f90b64372f95585305c818421810036c`
-
-### Text alternative
-
-The chart is a left-to-right seven-stage workflow: contract → context/routing → proportional topology → runtime DAG → separated execution/observation/review → scoped replan → verification/finish. A red veto connects the independent observer to safe-stop and fencing. A green loop returns only changed work through impact review, partial invalidation, and a new epoch, while unaffected work continues. Below it, the thin reliability kernel spans the execution stages, and a comparison inset contrasts one agent, same-context virtual roles, and Amadeus real-agent controls.
+> **Bottom line.** Amadeus is one evolving workflow. Generation 1 establishes the real-agent foundation; Generation 2, Arlecchino, adds a mandatory human-visible activation and continuous-status contract.
